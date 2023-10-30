@@ -1,7 +1,7 @@
 name = "PMSimulator"
 uuid = "e1cec47b-adf4-44e7-b68f-a49faa66b4f0"
 authors = ["Tim Knab"]
-version = "0.1.1"
+version = "0.2.0"
 
 [deps]
 PMSimulatorBase = "d32fc40f-6cc2-4d47-bc8e-739cf280b49f"
