@@ -73,7 +73,16 @@ ev2 = PMInput(time = 7*24*21, amt = mgkg_to_nmol(2.4, 70.0), input = :X1_ADC, ii
 evs = [ev1, ev2]
 
 sol = solve(mdl,evs,AutoTsit5(Rosenbrock23()),saveat=1.0);
+
+# plot
+plot(sol.t, sol.C_X1, label = "X1", xlabel="Time (hours)", ylabel="T-DM1 (nM)", dpi=600)
+plot!(sol.t, sol.C_X2, label = "X2")
 ````
+<p align="center">
+<img src='images/tdm1-pk_events1.png' width='500'>
+</p>
+
+
 
 
   
