@@ -83,6 +83,30 @@ plot!(sol.t, sol.C_X2, label = "X2")
 </p>
 
 
+##### Input DataFrames
+Example using a NONMEM-like dataframe with multiple individuals/IDs
+```julia
+#Use an example dataset
+data = DataFrame(CSV.File("tdm1.csv"))
+# Modify to set infusion compartment,  and modify 
+data = @chain data begin
+    @mutate(input = ifelse(CMT == 1, :X1_ADC, :nothing))
+end;
+
+
+sol = solve(mdl,data,AutoTsit5(Rosenbrock23()),saveat=1.0);
+
+plt = plot(xlabel="Time (hours)", ylabel="T-DM1 (nM)", dpi=600)
+[plot!(sol[i].t, sol[i].C_X1,color=get_color_palette(:auto,17)[1],label=i ==1 ? "X1" : nothing) for i in keys(sol)];
+[plot!(sol[i].t, sol[i].C_X2,color=get_color_palette(:auto,17)[2],label=label=i==1 ? "X2" : nothing) for i in keys(sol)];
+display(plt)
+```
+
+<p align="center">
+<img src='images/tdm1-pk_df1.png' width='500'>
+</p>
+
+
 
 
   
