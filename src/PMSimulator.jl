@@ -2,6 +2,6 @@
 
 module PMSimulator
 using Reexport
-@reexport using PMSimulatorBase
-@reexport using PMSimulatorSimulate
+@reexport using ..PMSimulatorBase
+@reexport using ..PMSimulatorSimulate
 end
